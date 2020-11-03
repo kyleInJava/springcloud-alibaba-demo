@@ -1,0 +1,19 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.242.137:8848 #配置Nacos地址
+      config:
+        server-addr: 192.168.242.137:8848
+        file-extension: yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

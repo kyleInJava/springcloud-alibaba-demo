@@ -1,0 +1,27 @@
+server:
+  port: 9005
+
+spring:
+  application:
+    name: seata-storage
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: kyle_tx_group
+    nacos:
+      discovery:
+        server-addr: 192.168.242.137:9999 #Nacos服务注册中心地址
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_storage?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml

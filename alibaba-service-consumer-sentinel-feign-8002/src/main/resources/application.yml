@@ -1,0 +1,33 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.242.137:9999 #Nacos服务注册中心地址
+    sentinel:
+      transport:
+        dashboard: 192.168.242.137:8080 #配置Sentinel dashboard地址
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 192.168.242.137:9999
+            dataId: service-consumer
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+# 激活Sentinel对Feign的支持
+feign:
+  sentinel:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

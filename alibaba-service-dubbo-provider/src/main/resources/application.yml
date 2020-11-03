@@ -1,0 +1,21 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: dubbo-service-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.242.137:8848 #配置Nacos地址
+
+dubbo:
+  registry:
+    address: nacos://192.168.242.137:8848
+  protocol:
+    name: dubbo
+    port: 20080
+    serialization: kryo
+    optimizer: com.kyle.cloud.alibaba.service.serialization.SerializationOptimizerImpl
+  provider:
+    timeout: 3000
